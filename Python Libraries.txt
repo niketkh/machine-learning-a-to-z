@@ -1,0 +1,55 @@
+# import numpy as np
+# np.append()	
+# np.ones()
+# np.argmax()
+# np.argmin()	
+# np.delete()
+
+# import pandas as pd
+''' Importing Dataset '''
+# dataset = pd.read_csv("Data.csv")
+# X = dataset.iloc[:, :-1]
+# y = dataset.iloc[:, -1]
+
+
+
+# from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+''' Encoding Categorical Data '''
+# labelEncoder = LabelEncoder()
+# X[:, -1] = labelEncoder.fit_transform(X[:, -1])
+''' One Hot Encoding by creating Dummy Variables '''
+# oneHotEncoder = OneHotEncoder(categorical_features = [-1])
+# X = oneHotEncoder.fit_transform(X).toarray()
+# Where -1 represents column that needs to be encoded
+
+''' Feature Scaling '''
+# from sklearn.preprocessing import StandardScaler
+# sc_X = StandardScaler()
+# X_train = sc_X.fit_transform(X_train)
+# X_test = sc_X.transform(X_test)
+
+# from sklearn.cross_validation import train_test_split
+''' Splitting dataset into Training Set and Test Set '''
+# X_train, X_test, y_train, Y_test = train_test_split (X, y, test_size=0.2, random_state=0)
+
+
+# from sklearn.linear_model import LinearRegression
+''' Fitting Linear Regression into Training Set '''
+# regressor = LinearRegression()
+# regressor.fit(X_train, y_train)
+''' Predicting Test set Results '''
+# y_pred = regressor.predict(X_test)	
+
+''' Building Optimal Model using Backward Elimination '''
+# import statsmodels.formula.api as sm
+# regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+# regressor_OLS.summary()
+
+
+# import matplotlib.pyplot as plt
+# plt.scatter(X_train, y_train, color='red')
+# plt.plot(X_train, regressor.predict(X_train), color='blue')
+# plt.title('Title')
+# plt.xlabel('X Label')
+# plt.ylabel('Y Label')
+# plt.show()

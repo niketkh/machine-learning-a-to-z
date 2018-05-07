@@ -1,0 +1,521 @@
+=> Section 1 - Welcome to Course [1-6]
+	-> Applications of Machine Learning
+		-> Facial Recognition
+		-> Gaming
+		-> Virtual Reality
+		-> Voice Recognition
+		-> Robots
+		-> Targeted ads
+		-> Search Engines
+		-> Recommendation Systems
+		-> Medical Research
+		-> Maps
+
+	-> Why Machine Learning is the Future
+		-> Since the dawn of time up until 2005 humans had created 130 Exabytes of data
+		-> 2010 - 1200 Exabytes of data
+		-> 2015 - 7900 Exabytes of data
+		-> Expected 2020 - 40900 Exabytes of data
+
+	-> Installing R and R studio (MAC & Windows)
+		-> Download and Install R 
+			https://cran.r-project.org/
+		-> Download and Install R Studio
+			https://www.rstudio.com/products/rstudio/download/#download
+
+
+	-> Update: Recommended Anaconda Version
+
+	-> Installing Python and Anaconda (MAC & Windows)
+		-> Download and Install Anaconda
+			https://docs.continuum.io/anaconda/install/windows.html
+
+			-> To set anaconda to path if not already
+				conda update anaconda-navigator
+
+			-> Launch Anaconda Navigator to see installed IDEs
+
+	-> Bonus: Meet your instructors
+		-> Super Datascience Podcast
+			http://superdatascience.com/2
+
+=> Section 2 - Part 1: Data Preprocessing [7-17]
+	-> Welcome to Part 1 - Data Preprocessing
+	-> Get the Dataset
+		https://www.superdatascience.com/machine-learning/
+
+		   Country   Age   Salary Purchased
+		0   France  44.0  72000.0        No
+		1    Spain  27.0  48000.0       Yes
+		2  Germany  30.0  54000.0        No
+		3    Spain  38.0  61000.0        No
+		4  Germany  40.0      NaN       Yes
+		5   France  35.0  58000.0       Yes
+		6    Spain   NaN  52000.0        No
+		7   France  48.0  79000.0       Yes
+		8  Germany  50.0  83000.0        No
+		9   France  37.0  67000.0       Yes
+
+	-> Importing the Libraries
+		-> In Python, using import statement
+		-> In R, select packages from the Packages View
+
+	-> Importing the Dataset
+		-> Python
+			# Importing the dataset
+
+			# Independent Variable Vector
+
+			# Dependent Variable Vector
+
+		-> R 
+			# Importing the dataset
+			# Set the folder where Data.csv exists as Working Directory from the Files View
+
+	-> For Python learners, summary of Object-oriented programming: classes & objects
+	-> Missing Data
+		-> Python 
+			# Handling Missing Data
+
+		-> R
+			# Handling Missing Data
+
+	-> Categorical Data
+		-> In our dataset, Country and Purchased columns represent categorical data
+		-> Python
+			# Encoding Categorical Data
+		
+		-> However, categorising country column with 0, 1 and 2 may mislead into some sort of ordering which isnt the case
+		-> Dummy encoding can be done to prevent that by creating 3 different columsn, one for each country
+		-> Python
+			# Encoding Categorical Data
+		-> R 
+			# Encoding Categorical Data
+			
+	-> Splitting the Dataset into the Training set and Test set
+
+		-> Python
+			# Splitting the dataset into training set and test set
+
+		-> R
+			# Splitting the dataset into Training set and Test set
+
+	-> Feature Scaling
+		-> In order to ensure that for all computations variables are in same scale; feature scaling is important
+		-> Two populars ways to achieve feature scaling are Standardisation and Normalisation
+		-> Python 
+			# Feature Scaling
+			from sklearn.preprocessing import StandardScaler
+
+			sc_X = StandardScaler()
+			X_train = sc_X.fit_transform(X_train)
+			X_test = sc_X.transform(X_test)
+		-> R 
+			# Feature Scaling
+			training_set[, 2:3] = scale(training_set[, 2:3])
+			test_set[, 2:3] = scale(test_set[, 2:3])
+
+	-> How to Set Up Working Directory
+	-> And here is our Data Preprocessing Template
+
+=> Section 3 - Part 2: Regression [18]
+	-> Welcome to Part 2 - Regression
+
+=> Section 4 - Simple Linear Regression [19-30]
+
+	-> Dataset + Business Problem Description
+		-> https://www.superdatascience.com/machine-learning/
+		-> Business Problem: Predict Salary from years of experience
+
+	-> Simple Linear Regression Intuition 
+		-> Simple Linear Regression (Finding a line that best fits the data)
+			y = b0 + b1 * x1
+			where y  => dependent variable
+				  x  => independent variable
+				  b1 => indicates how a unit change in x1 changes y
+				  b0 => constant
+		-> Ordinary Least Squares Method is used to find the best fitting line
+
+	-> Simple Linear Regression in Python 
+		# Data Preprocessing 
+		# Fitting Linear Regression into Training Set
+		# Predicting the Test Results
+		# Visualising Training Set Results
+		# Visualising Test Set Results
+		
+	-> Simple Linear Regression in R 
+		# Data Preprocessing
+		# Fitting Linear Regression into Training Set
+		# Predicting the Test Results
+		# Visualising Training Set Results
+		# Visualising Test Set Results
+
+=> Section 5 - Multiple Linear Regression [31-48]
+	-> Dataset + Business Problem Description
+		-> Predict Profit for a Startup based on R & D Spend, Administration, Marketing Spend, State
+
+	-> Multiple Linear Regression Intution 
+		-> Mutiple Linear Regression
+			y = b0 + b1 * x1 + b2 * x2 + b3 * x3 + b4 * x4 + ... + bn * xn
+			Where y  => dependent variable
+				  b0 => Constant
+
+		-> Assumptions of Linear Regression
+			-> Linearity
+			-> Homoscendasticity
+			-> Multivariate Normality
+			-> Independence of Errors
+			-> Lack of multicollinearity
+
+		-> Dummy Variables
+			-> As state in our data represents categorical data it cannot be directly used in multiple linear regression model. 
+			   We need to use dummy varibles for each state category i.e New York and California
+			y = b0 + b1 * x1 + b2 * x2 + b3 * x3 + b4 * D1
+
+		-> Dummy Variables Trap
+			-> Not to use both New York and California Dummy Variables in equation
+			-> As D2 = 1 - D1, this would cause model to not behave properly 
+			-> So always include one less dummy variables than actual 
+
+		-> Building a Model
+			-> Include only variables that are important for predicting dependent variables
+			-> Methods for building models
+				-> All-in
+				-> Backward Elimination (Also Sometimes called Step Wise Regression)
+				-> Forward Elimination (Also Sometimes called Step Wise Regression)
+				-> Bidirectional Elimination (Also Sometimes called Step Wise Regression)
+				-> Score Comparision
+			-> Refer Lecture PDF for explanation on each models
+
+	-> Multiple Linear Regression in Python 
+		# Data Preprocessing - 
+			Importing the dataset, 
+			X and y,
+			Encoding Categorical Data
+			Splitting training set and test set
+			Avoiding Dummy Variable Trap
+		# Fitting Multiple Linear Regression to the Training Set
+		# Predicting the Test Results
+		# Building Optimal Model using Backward Elimination 
+		
+	-> Multiple Linear Regression in R 
+
+=> Section 6 - Polynomial Regression [49-60]
+	-> Polynomial Regression Intuition
+	-> How to get the dataset
+	-> Polynomial Regression in Python - Step 1
+	-> Polynomial Regression in Python - Step 2
+	-> Polynomial Regression in Python - Step 3
+	-> Polynomial Regression in Python - Step 4
+	-> Python Regression Template
+	-> Polynomial Regression in R - Step 1
+	-> Polynomial Regression in R - Step 2
+	-> Polynomial Regression in R - Step 3
+	-> Polynomial Regression in R - Step 4
+	-> R Regression Template
+
+=> Section 7 - Support Vector Regression (SVR) [61-63]
+	-> How to get the dataset
+	-> SVR in Python
+	-> SVR in R
+
+=> Section 8 - Decision Tree Regression [64-67]
+	-> Decision Tree Regression Intuition
+	-> How to get the dataset
+	-> Decsion Tree Regression in Python
+	-> Decsion Tree Regression in R
+
+=> Section 9 - Random Tree Regression [68-71]
+	-> Random Forest Regression Intution
+	-> How to get the dataset
+	-> Random Forest Regression in Python
+	-> Random Forest Regression in R
+
+=> Section 10 - Evaluating Regression Models Performance [72-76]
+	-> R-Squared Intuition
+	-> Adjusted R-Squared Intuition
+	-> Evaluating Regression Models Performance - Homework's Final Part
+	-> Intrepreting Linear Regresison Coefficients
+	-> Conclusion of Part 2 - Regression
+
+=> Section 11 - Part 3: Classification [77]
+	-> Welcome to Part 3 - Classification
+
+=> Section 12 - Logistic Regression [78-91]
+	-> Logistic Regression Intution
+	-> How to get the dataset
+	-> Logistic Regression in Python - Step 1
+	-> Logistic Regression in Python - Step 2
+	-> Logistic Regression in Python - Step 3
+	-> Logistic Regression in Python - Step 4
+	-> Logistic Regression in Python - Step 5
+	-> Python Classification Template
+	-> Logistic Regression in R - Step 1
+	-> Logistic Regression in R - Step 2
+	-> Logistic Regression in R - Step 3
+	-> Logistic Regression in R - Step 4
+	-> Logistic Regression in R - Step 5
+	-> R Classification Template
+
+=> Section 13 - K-Nearest Neighbors (K-NN) [92-95]
+	-> K-Nearest Neighbor Intuition
+	-> How to get the dataset
+	-> K-NN in Python
+	-> K-NN in R
+
+=> Section 14 - Support Vector Machine (SVM) [96-99]
+	-> SVM Intution
+	-> How to get the dataset
+	-> SVM in Python
+	-> SVM in R
+
+=> Section 15 - Kernel SVM [100-106]
+	-> Kernel SVM Intution
+	-> Mapping to higher dimension
+	-> The Kernel Trick
+	-> Types of Kernel Functions
+	-> How to get the dataset
+	-> Kernel SVM in Python
+	-> Kernel SVM in R
+
+=> Section 16 - Naive Bayes [107-113]
+	-> Bayes Theorem
+	-> Naive Bayes Intuition
+	-> Naive Bayes Intuition (Challenge Reveal)
+	-> Naive Bayes Intuition (Extras)
+	-> How to get the dataset
+	-> Naive Bayes in Python
+	-> Naive Bayes in R
+
+=> Section 17 - Decision Tree Classification [114-117]
+	-> Decision Tree Classification Intuition
+	-> How to get the dataset
+	-> Decision Tree Classification in Python
+	-> Decision tree Classification in R
+
+=> Section 18 - Random Forest Classification [118-121]
+	-> Random Forest Classification  Intuition
+	-> How to get the dataset
+	-> Random Forest Classification in Python
+	-> Random Forest Classification in R
+
+=>  Section 19 - Evaluating Classification Models Performance [122-127]
+	-> False Positives & False Negatives
+	-> Confusion Matrix
+	-> Accuracy Paradox
+	-> CAP Curve
+	-> CAP Curve Analysis
+	-> Conclusion of Part 3 - Classification
+
+=> Section 20 - Part 4: Clustering [128]
+	-> Welcome to Part 4 - Clustering
+
+=> Section 21 - K - Means Clustering [129-134]
+	-> K-Means Clustering Intuition
+	-> K-Means Random Initialization Trap
+	-> K-Means Selecting The Number Of Clusters
+	-> How to get the dataset
+	-> K-Means Clustering in Python
+	-> K-Means Clustering in R
+
+=> Section 22 - Hierarchial Clustering [135-149]
+	-> Hierarchial Clustering Intuition
+	-> Hierarchial Clustering How Dendograms Work
+	-> Hierarchial Clustering Using Dendograms
+	-> How to get the dataset
+	-> HC in Python - Step 1
+	-> HC in Python - Step 2
+	-> HC in Python - Step 3
+	-> HC in Python - Step 4
+	-> HC in Python - Step 5
+	-> HC in R - Step 1
+	-> HC in R - Step 2
+	-> HC in R - Step 3
+	-> HC in R - Step 4
+	-> HC in R - Step 5
+	-> Conclusion of Part 4 - Clustering
+
+=> Section 23 - Part 5: Association Rule Learning [150]
+	-> Welcome to Part 5 - Association Rule Learning
+
+=> Section 24 - Apriori [151-158]
+	-> Apriori Intuition
+	-> How to get the dataset
+	-> Apriori in R - Step 1
+	-> Apriori in R - Step 2
+	-> Apriori in R - Step 3
+	-> Apriori in Python - Step 1
+	-> Apriori in Python - Step 2
+	-> Apriori in Python - Step 3
+
+
+=> Section 25 - Eclat [159-161]
+	-> Eclat Intuition
+	-> How to get the dataset
+	-> Eclat in R
+
+=> Section 26 - Part 6: Reinforcement Learning [162]
+	-> Welcome to Part 6 - Reinforcement Learning
+
+=> Section 27 - Upper Confidence Bound (UCB) [163-173]
+	-> The Multi-Armed Bandit Problem
+	-> Upper Confidence Bound (UCB) Intuition
+	-> How to get the dataset
+	-> Upper Confidence Bound in Python - Step 1
+	-> Upper Confidence Bound in Python - Step 2
+	-> Upper Confidence Bound in Python - Step 3
+	-> Upper Confidence Bound in Python - Step 4
+	-> Upper Confidence Bound in R - Step 1
+	-> Upper Confidence Bound in R - Step 2
+	-> Upper Confidence Bound in R - Step 3
+	-> Upper Confidence Bound in R - Step 4
+
+=> Section 28 - Thompson Sampling [174-180]
+	-> Thomson Sampling Intuition
+	-> Algorithm Comparision: UCB vs Thompson Sampling
+	-> How to get the dataset
+	-> Thompson Sampling in Python - Step 1
+	-> Thompson Sampling in Python - Step 2
+	-> Thompson Sampling in R - Step 1
+	-> Thompson Sampling in R - Step 2
+
+=> Section 29 - Part 7: Natural Language Processing [181-204]
+	-> Welcome to Pat 7 - Natural Language Processing
+	-> How to get the dataset
+	-> Natural Language Processing in Python - Step 1
+	-> Natural Language Processing in Python - Step 2
+	-> Natural Language Processing in Python - Step 3
+	-> Natural Language Processing in Python - Step 4
+	-> Natural Language Processing in Python - Step 5
+	-> Natural Language Processing in Python - Step 6
+	-> Natural Language Processing in Python - Step 7
+	-> Natural Language Processing in Python - Step 8
+	-> Natural Language Processing in Python - Step 9
+	-> Natural Language Processing in Python - Step 10
+	-> Homework Challenge
+	-> Natural Language Processing in R - Step 1
+	-> Natural Language Processing in R - Step 2
+	-> Natural Language Processing in R - Step 3
+	-> Natural Language Processing in R - Step 4
+	-> Natural Language Processing in R - Step 5
+	-> Natural Language Processing in R - Step 6
+	-> Natural Language Processing in R - Step 7
+	-> Natural Language Processing in R - Step 8
+	-> Natural Language Processing in R - Step 9
+	-> Natural Language Processing in R - Step 10
+	-> Homework Challenge
+
+=> Section 30 - Part 8: Deep Learning [205-206]
+	-> Welcome to Part 8 - Deep Learning
+	-> What is Deep Learning?
+
+=> Section 31 - Artificial Neural Networks [207-230]
+	-> Plan of attack 
+	-> The Neuron
+	-> The Activation Function
+	-> How do Neural Networks work?
+	-> Gradient Descent
+	-> Stochastic Gradient Descent
+	-> Bacpropagation
+	-> How to get the dataset
+	-> Business Problem Description
+	-> ANN in Python - Step 1 - Installing Theano, Tensorflow and Keras
+	-> ANN in Python - Step 2
+	-> ANN in Python - Step 3
+	-> ANN in Python - Step 4
+	-> ANN in Python - Step 5
+	-> ANN in Python - Step 6
+	-> ANN in Python - Step 7
+	-> ANN in Python - Step 8
+	-> ANN in Python - Step 9
+	-> ANN in Python - Step 10
+	-> ANN in R - Step 1
+	-> ANN in R - Step 2
+	-> ANN in R - Step 3
+	-> ANN in R - Step 4 (Last step)
+
+=> Section 32 - Convolutional Neural Networks [231-251]
+	-> Plan of attack
+	-> What are convolutional neural networks?
+	-> Step 1 - Convolution Operation
+	-> Step 1(b) - ReLU Layer
+	-> Step 2 - Pooling
+	-> Step 3 - Flattening
+	-> Step 4 - Full Connection
+	-> Summary
+	-> Softmax & Cross-Entropy
+	-> How to get the dataset
+	-> CNN in Python - Step 1
+	-> CNN in Python - Step 2
+	-> CNN in Python - Step 3
+	-> CNN in Python - Step 4
+	-> CNN in Python - Step 5
+	-> CNN in Python - Step 6
+	-> CNN in Python - Step 7
+	-> CNN in Python - Step 8
+	-> CNN in Python - Step 9
+	-> CNN in Python - Step 10
+	-> CNN in R 
+
+=> Section 33 - Part 9: Dimensionality Reduction [252]
+	-> Welcome to Part 9 - Dimensionality Reduction
+
+=> Section 34 - Principal Component Analysis (PCA) [253-259]
+	-> How to get the dataset 
+	-> PCA in Python - Step 1
+	-> PCA in Python - Step 2
+	-> PCA in Python - Step 3
+	-> PCA in R - Step 1
+	-> PCA in R - Step 2
+	-> PCA in R - Step 3
+
+=> Section 35 - Linear Discriminant Analysis (LDA) [260-262]
+	-> How to get the dataset
+	-> LDA in Python
+	-> LDA in R
+
+=> Section 36 - Kernel PCA [263-265]
+	-> How to get the dataset
+	-> Kernel PCA in Python
+	-> Kernel PCA in R
+
+=> Section 37 - Part 10: Model Selection & Boosting [266]
+	-> Welcome to Part 10 - Model Selection & Boosting
+
+=> Section 38 - Model Selection [267-272]
+	-> How to get the dataset
+	-> k-Fold Cross Validation in Python
+	-> k-Fold Cross Validation in R
+	-> Grid Search in Python - Step 1
+	-> Grid Search in Python - Step 2
+	-> Grid Search in R
+
+=> Section 39 - XGBoost [273-276]
+	-> How to get the dataset
+	-> XGBoost in Python - Step 1
+	-> XGBoost in Python - Step 2
+	-> XGBoost in R
+
+=> References
+	-> Datasets
+		-> https://www.superdatascience.com/machine-learning/
+
+	-> Using Sublime for python development
+		https://stackoverflow.com/questions/8551735/how-do-i-run-python-code-from-sublime-text-2
+
+	-> Install Anaconda plugin for sublime
+
+	-> See list of available modules in Python
+		https://stackoverflow.com/questions/739993/how-can-i-get-a-list-of-locally-installed-python-modules
+
+		help('modules')
+
+	-> R Studio
+		-> Press F1 in R Studio to see help for a function
+
+	-> Spyder
+		-> Press Ctrl + I to see help for a function
+		-> 
+
+
+
